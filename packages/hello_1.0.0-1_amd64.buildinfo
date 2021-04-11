@@ -1,6 +1,3 @@
------BEGIN PGP SIGNED MESSAGE-----
-Hash: SHA512
-
 Format: 1.0
 Source: hello
 Binary: hello hello-dbgsym
@@ -17,7 +14,7 @@ Checksums-Sha256:
  46bf746dfb646f3c7800de5399cd0b17487e10718c19fbf51edea985e41ce3cd 3420 hello_1.0.0-1_amd64.deb
 Build-Origin: Pengwin
 Build-Architecture: amd64
-Build-Date: Sun, 11 Apr 2021 07:13:35 +0200
+Build-Date: Sun, 11 Apr 2021 07:54:48 +0200
 Installed-Build-Depends:
  adduser (= 3.118),
  apt (= 2.2.2),
@@ -287,18 +284,3 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=8"
  LANG="en_US.UTF-8"
  SOURCE_DATE_EPOCH="1618099745"
-
------BEGIN PGP SIGNATURE-----
-
-iQHIBAEBCgAyFiEEKmaZCYNQMQe8O+iwKGYxn+YfhdsFAmByhYAUHGppcmlrbGVw
-bEBzZXpuYW0uY3oACgkQKGYxn+Yfhdu0PAv/Z0su0m2fw0d/a+H6ajJ+HMy3jVK5
-UrNG85XZ3SK5ZuISlP+jN0JbUMJGRddiCOHAfC0TiwnHZSVBTIRfLDkjCSaxUnC+
-rAuze6piPb5LcE9yv3jBW+/tFglCI1Tq2voKLYXNJpRWJXiDL7Ynva0Ne/Ju1qHl
-rURQtfcU1yL8FnOfyB71s183tBfmvnxePTPqg+wU36fX9Fl0cQo9DgqUh3dqUYJY
-Z4pWdeJ07RsoF9dh2a+IPbdRuCNsJzXcvWaiMTf46OSej0m+F0mqepF6sRJngWjN
-SZHZpwdOKkERfW7GGrK0SehahWwEA1QVIvSU8Rk3eFG2GvZhqAODM5mILBHvzQU6
-b/0aTPqztfHoJEWuVagx0R63AqT3PwHbM4/4HsNwBbXtTIsKrgDtSX6n+cxXaFtT
-6XSNnXEoYcbicQfZRaLdWwI0bzfWHQJ4oL82bbzOG3Xtg2eTBe4ne3cR4UxRftt/
-Hmz14vCxhXXg6PTTrylA67RLCcwSEDkLlPqI
-=bRIt
------END PGP SIGNATURE-----
