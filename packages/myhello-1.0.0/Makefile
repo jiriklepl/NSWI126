@@ -2,7 +2,7 @@
 
 all: binary
 
-install: bin/hello $(DESTDIR)/usr/bin
+install: bin/myhello $(DESTDIR)/usr/bin
 	mv $< $(DESTDIR)/usr/bin/
 
 $(DESTDIR)/usr/bin: $(DESTDIR)/usr
@@ -11,9 +11,9 @@ $(DESTDIR)/usr/bin: $(DESTDIR)/usr
 $(DESTDIR)/usr:
 	mkdir $(DESTDIR)/usr
 
-binary: bin/hello
+binary: bin/myhello
 
-bin/hello: src/main.cpp include/hello.hpp bin
+bin/myhello: src/main.cpp include/hello.hpp bin
 	$(CXX) -o $@ -Iinclude $<
 
 bin:

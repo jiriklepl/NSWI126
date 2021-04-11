@@ -1,11 +1,11 @@
-Source: hello
+Source: myhello
 Section: text
 Priority: standard
 Maintainer: Jiří Klepl <jiriklepl@seznam.cz>
 Standards-Version: 1.0.0
-Build-Depends: debhelper (>> 5.0.0)
+Build-Depends: debhelper (>> 10.0.0)
 
-Package: hello
+Package: myhello
 Homepage: https://github.com/jiriklepl/NSWI126
 Architecture: any
 Description: greets you!
