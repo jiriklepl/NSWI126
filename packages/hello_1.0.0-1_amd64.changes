@@ -1,3 +1,6 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.8
 Date: Sun, 11 Apr 2021 02:09:05 +0200
 Source: hello
@@ -16,13 +19,28 @@ Changes:
    * Initial release. (Closes: #XXXXXX)
 Checksums-Sha1:
  652b23e66d3432e79208fb0e3464c6b3a3ba1f0f 2676 hello-dbgsym_1.0.0-1_amd64.deb
- 9568d6b55ac1034206285e03025a2ab3e7636754 7961 hello_1.0.0-1_amd64.buildinfo
+ 109edf98c18e30eb4fa62d57c4a74abbf01acd15 8698 hello_1.0.0-1_amd64.buildinfo
  892490cd5c767a32c5b91f4b5c53e969494fb90c 3420 hello_1.0.0-1_amd64.deb
 Checksums-Sha256:
  628abe1481d89daae9d5b7f41c45a61d936eaa541221d7235c0aa40cfb9143f3 2676 hello-dbgsym_1.0.0-1_amd64.deb
- 88618a1af9c37fcefebb3df1f9c1a414a17e73efefeb711acf73235aafb5f578 7961 hello_1.0.0-1_amd64.buildinfo
+ a528bac04bd70db5336ff5d01d3b2f92d71b7069745b9c228b0ead9c2acd5314 8698 hello_1.0.0-1_amd64.buildinfo
  46bf746dfb646f3c7800de5399cd0b17487e10718c19fbf51edea985e41ce3cd 3420 hello_1.0.0-1_amd64.deb
 Files:
  e2ce8be40546d1bd57698baa6951acf8 2676 debug optional hello-dbgsym_1.0.0-1_amd64.deb
- 39cae9e158091f1da88f7dd1c32fef85 7961 text standard hello_1.0.0-1_amd64.buildinfo
+ c506e952dffb66bda5a48fa5dc6ef6b3 8698 text standard hello_1.0.0-1_amd64.buildinfo
  b0222a62114a0e10473122c74892a499 3420 text standard hello_1.0.0-1_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQHIBAEBCgAyFiEEKmaZCYNQMQe8O+iwKGYxn+YfhdsFAmByfTAUHGppcmlrbGVw
+bEBzZXpuYW0uY3oACgkQKGYxn+Yfhdt81wv+P8I4JWhOpFN7JrQiz5V0cTwH7aB4
+rFNAksn6WdAGgCrNvCbi4FkgvV8C0KU6rwybRtZrDSVQl5WBkbiSuuombi6B+61d
+3dRyf4BXVCJFYN/nULUWsGdmZcqI0DStyZ/Lgf+i26fX/BctzR5w0crDUG5bftTX
+YxFe+KGfsOqo+iIrHQsrx7+kdhuIFx6nSilrfz7OEJLnWHR0vxg1QXxj3WA3N93T
+JbhkqJdTSD0j90nfBAH001kAmP4fSmlQe7bdi6tyOcTcB7dUx6Vwc/Xewz+B8BaQ
+l27ChG9A8RVRh2wKhrRJn0KgFsqq2NbqwpsCX8/y1NRbMAhJ8omhXOLxLeDXyvgw
+dDtTP71spww7HhC+ISa6XOofgP4BSSDeDm3ELZg43PccB3MFN8mdl7Vcnt+IzBza
+KMfkExpUwjg8m/UGTlgPwOzFoPQcSqA8WACEos04//WY6MJouCmaWl2Vbd+onfnL
+uE37yqPahGQLZWiGxUHgOM4EilXreU906QVe
+=8bQs
+-----END PGP SIGNATURE-----
