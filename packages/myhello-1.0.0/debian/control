@@ -8,5 +8,5 @@ Build-Depends: debhelper (>> 10.0.0)
 Package: myhello
 Homepage: https://github.com/jiriklepl/NSWI126
 Architecture: any
-Description: greets you!
-    This program can greet you!
+Description: greets the world!
+    This program greets the world!

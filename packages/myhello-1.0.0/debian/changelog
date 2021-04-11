@@ -1,3 +1,10 @@
+myhello (1.0.0-1.1) unstable; urgency=medium
+
+  * Maintainer upload.
+  * 
+
+  -- Jiří Klepl <jiriklepl@seznam.cz>  Mon, 12 Apr 2021 01:50:07 +0200
+
 myhello (1.0.0-1) unstable; urgency=low
 
   * Initial release. (Closes: #XXXXXX)
