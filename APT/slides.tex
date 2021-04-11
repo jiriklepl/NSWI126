@@ -43,6 +43,7 @@
       \item Jednoduché hledání
       \item Přehled o nainstalovaném softwaru
       \item Udržení kompatibility mezi různými programy
+      \item Důvěryhodné binárky namísto hodin compilace
       \item Bezpečnost
     \end{itemize}
     \item \textbf{Z pohledu developera}
@@ -69,8 +70,10 @@ Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
 \begin{frame}[fragile]{APT - Advanced Package Tool}
   \begin{itemize}
     \item Package manager pro debian (a ubuntu)
-    \item Skupina více programů: \textbf{apt}, \textbf{apt-get}, \textbf{apt-cache}
-    \item Frontend pro \textbf{dpkg}: low-lvl nástroj pro instalaci a správu packagů
+    \item Skupina více programů a knihoven
+    \item Nejvýznamnější: \textbf{apt}, \textbf{apt-get}, \textbf{apt-cache}
+    \item Frontend pro \textbf{dpkg}: low-lvl nástroj pro instalaci a správu lokálních packagů
+    \item \textbf{apt} je funkcionálně front-endem ostatních nástrojů pro koncové uživatele
   \end{itemize}
 \end{frame}
 
@@ -149,35 +152,35 @@ Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
   \begin{itemize}
     \item \textbf{binary package}
     \begin{itemize}
-      \item záznam repozitáře začíná ``deb'',
+      \item Záznam repozitáře začíná ``deb'',
 
       např. deb https://deb.debian.org/debian bullseye main
-      \item pro koncové uživatele
-      \item obecně jen pro určité architektury
+      \item Pro koncové uživatele
+      \item Obecně jen pro určité architektury
     \end{itemize}
-    \item \textbf{source package}
+    \item \textbf{Source package}
     \begin{itemize}
-      \item záznam repozitáře začíná ``deb-src'',
+      \item Záznam repozitáře začíná ``deb-src'',
 
       např. deb-src https://deb.debian.org/debian bullseye main
-      \item pro development, testing a customizaci
+      \item Pro development, testing a customizaci
     \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{Z čeho se skládá package připraven pro sestavení}
   \begin{itemize}
-    \item složka \textbf{debian} ve složce \textbf{<název>-<verze (major.minor.patch)>} se zdrojem programu; obsah \textbf{debian}:
+    \item Složka \textbf{debian} ve složce \textbf{<název>-<verze (major.minor.patch)>} se zdrojem programu; obsah \textbf{debian}:
     \begin{itemize}
       \item \textbf{changelog}: informace o verzích package
       \item \textbf{rules}: script pro sestavení package (např. makefile - může pak spustit tradiční makefile programu; tato část je extrémě flexibilní - zde použijeme makefile s dh\_helpery, co řeší boilerplate)
       \item \textbf{control}: různé informace o package
       \begin{itemize}
-        \item název, aktuální verze a kategorie (sekce a priorita (důležitost pro systém))
-        \item maintainer a homepage
-        \item popis programu
-        \item architektura (např. amd64, ale i all nebo any)
-        \item informace o (build-) dependencích a vyloučení
+        \item Název, aktuální verze a kategorie (sekce a priorita (důležitost pro systém))
+        \item Maintainer a homepage
+        \item Popis programu
+        \item Architektura (např. amd64, ale i all nebo any)
+        \item Informace o (build-) dependencích a vyloučení
       \end{itemize}
       \item \textbf{compat}: verze dh\_helperů
     \end{itemize}
@@ -193,13 +196,13 @@ Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
   \begin{itemize}
     \item \lstinline{debuild -b} sestaví podepsaný .deb package
     \item \lstinline{debuild -b -us -uc} sestaví nepodepsaný .deb package pro vlastní použití
-    \item složna \textbf{debian} simuluje root file-systému
+    \item Složna \textbf{debian} simuluje root file-systému
       \begin{itemize}
-        \item binárka programu tradičně v \textbf{/usr/bin/}, tedy při sestavování package: \textbf{debian/usr/bin/}
-        \item library programu tradičně v \textbf{/usr/lib.../}, tedy při sestavování package: \textbf{debian/usr/lib.../}
+        \item Binárka programu tradičně v \textbf{/usr/bin/}, tedy při sestavování package: \textbf{debian/usr/bin/}
+        \item Library programu tradičně v \textbf{/usr/lib.../}, tedy při sestavování package: \textbf{debian/usr/lib.../}
       \end{itemize}
-    \item vznikne .deb archív a doprovodné soubory
-    \item název vzniklého archívu obsahuje verzi, číslo revize a architekturu
+    \item Vznikne .deb archív a doprovodné soubory
+    \item Název vzniklého archívu obsahuje verzi, číslo revize a architekturu
   \end{itemize}
 \end{frame}
 
