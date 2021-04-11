@@ -2,8 +2,14 @@
 
 all: binary
 
-install: bin/hello
-	mv $^ $(DESTDIR)
+install: bin/hello $(DESTDIR)/usr/bin
+	mv $< $(DESTDIR)/usr/bin/
+
+$(DESTDIR)/usr/bin: $(DESTDIR)/usr
+	mkdir $(DESTDIR)/usr/bin
+
+$(DESTDIR)/usr:
+	mkdir $(DESTDIR)/usr
 
 binary: bin/hello
 
