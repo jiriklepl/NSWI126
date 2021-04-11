@@ -1,0 +1,34 @@
+Package: hello
+Version: 1.0.0-1
+Architecture: amd64
+Maintainer: Jiří Klepl <jiriklepl@seznam.cz>
+Installed-Size: 23
+Filename: ./hello_1.0.0-1_amd64.deb
+Size: 3420
+MD5sum: b0222a62114a0e10473122c74892a499
+SHA1: 892490cd5c767a32c5b91f4b5c53e969494fb90c
+SHA256: 46bf746dfb646f3c7800de5399cd0b17487e10718c19fbf51edea985e41ce3cd
+Section: text
+Priority: standard
+Homepage: https://github.com/jiriklepl/NSWI126
+Description: greets you!
+    This program can greet you!
+
+Package: hello-dbgsym
+Source: hello
+Version: 1.0.0-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Jiří Klepl <jiriklepl@seznam.cz>
+Installed-Size: 17
+Depends: hello (= 1.0.0-1)
+Filename: ./hello-dbgsym_1.0.0-1_amd64.deb
+Size: 2676
+MD5sum: e2ce8be40546d1bd57698baa6951acf8
+SHA1: 652b23e66d3432e79208fb0e3464c6b3a3ba1f0f
+SHA256: 628abe1481d89daae9d5b7f41c45a61d936eaa541221d7235c0aa40cfb9143f3
+Section: debug
+Priority: optional
+Description: debug symbols for hello
+Build-Ids: 62938754e254fce4173472275a874dca9837a97a
+
