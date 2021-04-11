@@ -1,3 +1,5 @@
+#!/bin/sh
+
 printf "Press enter to continue"; read
 
 cd myhello-1.0.0

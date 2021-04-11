@@ -35,37 +35,43 @@
 \begin{document}
 \maketitle
 
-\section{Package managers}
-
 \begin{frame}{Proč chtít package manager}
-\begin{itemize}
-\item \textbf{Z pohledu uživatele}
   \begin{itemize}
-    \item Bezpečnost
-    \item Snadnost instalace \& updatů
-    \item Jednoduché hledání
-    \item Přehled o nainstalovaném softwaru
-    \item Udržení kompatibility mezi různými programy
+    \item \textbf{Z pohledu uživatele}
+    \begin{itemize}
+      \item Snadnost instalace \& updatů
+      \item Jednoduché hledání
+      \item Přehled o nainstalovaném softwaru
+      \item Udržení kompatibility mezi různými programy
+      \item Bezpečnost
+    \end{itemize}
+    \item \textbf{Z pohledu developera}
+    \begin{itemize}
+      \item Přívětivost pro uživatele
+      \item Vyšší důvěryhodnost (má to úroveň)
+      \item Možnost vytvoření ekosystému
+    \end{itemize}
   \end{itemize}
-\item \textbf{Z pohledu developera}
-\begin{itemize}
-  \item Přívětivost pro uživatele
-  \item Vyšší důvěryhodnost (má to úroveň)
-  \item Možnost vytvoření ekologie % TODO
-\end{itemize}
-\end{itemize}
 \end{frame}
 
 \begin{frame}{Package managery}
-\begin{itemize}
-\item \textbf{apt}: Debian/Ubuntu
-\item \textbf{dnf}: Red Hat/Fedora
-\item \textbf{zypper}: SLES/openSUSE
-\item \textbf{pacman}: Arch
-\item \textbf{emerge}: Gentoo
-\end{itemize}
+  \begin{itemize}
+    \item \textbf{apt}: Debian/Ubuntu
+    \item \textbf{dnf}: Red Hat/Fedora
+    \item \textbf{zypper}: SLES/openSUSE
+    \item \textbf{pacman}: Arch
+    \item \textbf{emerge}: Gentoo
+  \end{itemize}
 
 Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
+\end{frame}
+
+\begin{frame}[fragile]{APT - Advanced Package Tool}
+  \begin{itemize}
+    \item Package manager pro debian (a ubuntu)
+    \item Skupina více programů: \textbf{apt}, \textbf{apt-get}, \textbf{apt-cache}
+    \item Frontend pro \textbf{dpkg}: low-lvl nástroj pro instalaci a správu packagů
+  \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]{APT - instalační příkazy}
@@ -73,15 +79,15 @@ Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
     \item Více než 50'000 packagů (Debian), 60'000 (Ubuntu)
     \item Instalace
     \begin{lstlisting}
-      sudo apt install <package>
+  sudo apt install <package>
     \end{lstlisting}
     \item Odstranění
     \begin{lstlisting}
-      sudo apt remove <package>
+  sudo apt remove <package>
     \end{lstlisting}
     \item Update \& upgrade
     \begin{lstlisting}
-      sudo apt update && sudo apt upgrade
+  sudo apt update && sudo apt upgrade
     \end{lstlisting}
   \end{itemize}
 \end{frame}
@@ -90,34 +96,39 @@ Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
   \begin{itemize}
     \item Hledání package
     \begin{lstlisting}
-      apt search "regex"
+  apt search "regex"
     \end{lstlisting}
     \item Informace o packagi
     \begin{lstlisting}
-      apt info <package>
+  apt info <package>
     \end{lstlisting}
     \item Seznam nainstalovaných packagů
     \begin{lstlisting}
-      apt list --installed
+  apt list --installed
     \end{lstlisting}
     \item Seznam ručně nainstalovaných packagů
     \begin{lstlisting}
-      apt list --manual-installed
+  apt list --manual-installed
     \end{lstlisting}
   \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+  \centering
+  {\Large\bfseries Příklad: ./examples.sh}
 \end{frame}
 
 \begin{frame}[fragile]{Přidání dalších packagů}
   Jednoduše:
   \begin{lstlisting}
-    sudo add-apt-repository "deb <repository>"
-    sudo apt-key adv --fetch-keys <url>
-    sudo apt-get update
+  sudo add-apt-repository "deb <repository>"
+  sudo apt-key adv --fetch-keys <url>
+  sudo apt-get update
   \end{lstlisting}
   Nebo:
   \begin{lstlisting}
-    sudo <oblibeny editor (napr. VIM)> /etc/apt/sources.list
-    curl -L <url> | sudo apt-key add -
+  sudo <oblibeny editor (napr. VIM)> /etc/apt/sources.list
+  curl -L <url> | sudo apt-key add -
   \end{lstlisting}
 \end{frame}
 
@@ -133,15 +144,137 @@ Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Kde brát informace}
+\begin{frame}[fragile]{Co to je package}
+  Dva druhy
   \begin{itemize}
-    \item https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf
-    \item https://www.debian.org/doc/debian-policy/index.html
+    \item \textbf{binary package}
+    \begin{itemize}
+      \item záznam repozitáře začíná ``deb'',
+      
+      např. deb https://deb.debian.org/debian bullseye main
+      \item pro koncové uživatele
+      \item obecně jen pro určité architektury
+    \end{itemize}
+    \item \textbf{source package}
+    \begin{itemize}
+      \item záznam repozitáře začíná ``deb-src'',
+      
+      např. deb-src https://deb.debian.org/debian bullseye main
+      \item pro development, testing a customizaci
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Z čeho se skládá package připraven pro sestavení}
+  \begin{itemize}
+    \item složka \textbf{debian} ve složce \textbf{<název>-<verze (major.minor.patch)>} se zdrojem programu; obsah \textbf{debian}:
+    \begin{itemize}
+      \item \textbf{changelog}: informace o verzích package
+      \item \textbf{rules}: script pro sestavení package (např. makefile - může pak spustit tradiční makefile programu; tato část je extrémě flexibilní - zde použijeme makefile s dh\_helpery, co řeší boilerplate)
+      \item \textbf{control}: různé informace o package
+      \begin{itemize}
+        \item název, aktuální verze a kategorie (sekce a priorita (důležitost pro systém))
+        \item maintainer a homepage
+        \item popis programu
+        \item architektura (např. amd64, ale i all nebo any)
+        \item informace o (build-) dependencích a vyloučení
+      \end{itemize}
+      \item \textbf{compat}: verze dh\_helperů
+    \end{itemize}
   \end{itemize}
 \end{frame}
 
 \begin{frame}[plain]
-\centering
-{\Large\bfseries Thank you for attention!}
+  \centering
+  {\Large\bfseries Příklad: ../packages/myhello-1.0.0/debian}
 \end{frame}
+
+\begin{frame}[fragile]{Sestavení package}
+  \begin{itemize}
+    \item \lstinline{debuild -b} sestaví podepsaný .deb package
+    \item \lstinline{debuild -b -us -uc} sestaví nepodepsaný .deb package pro vlastní použití
+    \item složna \textbf{debian} simuluje root file-systému
+      \begin{itemize}
+        \item binárka programu tradičně v \textbf{/usr/bin/}, tedy při sestavování package: \textbf{debian/usr/bin/}
+        \item library programu tradičně v \textbf{/usr/lib.../}, tedy při sestavování package: \textbf{debian/usr/lib.../}
+      \end{itemize}
+    \item vznikne .deb archív a doprovodné soubory
+    \item název vzniklého archívu obsahuje verzi, číslo revize a architekturu
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+  \centering
+  {\Large\bfseries Příklad: ../packages/myhello-1.0.0}
+\end{frame}
+
+\begin{frame}[fragile]{.deb soubor: \texttt{ar} archive}
+  \begin{lstlisting}
+$ ar tv wget_1.12-2.1_i386.deb
+rw-r--r-- 0/0 4 Sep 5 15:43 2010 debian-binary
+rw-r--r-- 0/0 2403 Sep 5 15:43 2010 control.tar.gz
+rw-r--r-- 0/0 751613 Sep 5 15:43 2010 data.tar.gz
+  \end{lstlisting}
+  \begin{itemize}
+    \item \texttt{debian-binary}: version of the deb file format, "2.0{\textbackslash}n"
+    \item \texttt{control.tar.gz}: metadata about the package
+    \item \texttt{control, md5sums, (pre|post)(rm|inst), triggers, shlibs},...
+    \item \texttt{data.tar.gz}: data files of the package
+  \end{itemize}
+  from: https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf
+\end{frame}
+
+\begin{frame}[fragile]{Co když mám důvěryhodný program, který není .deb package}
+  Lze jednoduše zabalit do .deb package a nainstalovat přes dpkg / apt (opět příklad myhello)
+
+  Proč to dělat?
+  \begin{itemize}
+    \item Konzistence se zbytkem systému (jednotný způsob instalace)
+    \item Chci mít přehled i o softwaru, který není z repozitářů pro můj OS
+    \item Vyhnutí se mrtvým souborům v systému
+    \item Vyhnutí se mrtvým souborům v systému
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Apt repozitář}
+  Složka s .deb packagy a pomocnými soubory:
+  \begin{itemize}
+    \item \texttt{Packages}: soubor se seznamem packagů, stručnými informacemi a kontrolními součty
+    \item \texttt{Packages.gz} (optional): komprimovaný soubor Packages
+    \item \texttt{Release}: soubor s kontrolními součty pro soubory Packages (,Packages.gz) a sebe
+    \item \texttt{Release.gpg}: gnupg podpis souboru Release
+    \item \texttt{InRelease}: Release a Release.gpg dohromady
+    \item \texttt{public.key} (pokud nelze předat jiným způsobem): veřejný klíč pro ověření
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+  \centering
+  {\Large\bfseries Příklad:}
+
+  {\Large\bfseries ../packages/scripts.sh}
+
+  {\Large\bfseries "deb https://klepl.cz/packages /"}
+\end{frame}
+
+\begin{frame}[fragile]{Kde vzít další informace}
+  \begin{itemize}
+    \item https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf
+    \item https://www.debian.org/doc/debian-policy/index.html
+    \item https://medium.com/sqooba/create-your-own-custom-and-authenticated-apt-repository-1e4a4cf0b864
+    \item https://wiki.archlinux.org/index.php/Pacman/Rosetta
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+  \centering
+  {\Large\bfseries Univerzum pro dotazy}
+\end{frame}
+
+\begin{frame}[plain]
+  \centering
+  {\Large\bfseries Díky za pozornost!}
+\end{frame}
+
 \end{document}
+  
