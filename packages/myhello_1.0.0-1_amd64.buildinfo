@@ -1,20 +1,23 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
 Format: 1.0
-Source: hello
-Binary: hello hello-dbgsym
+Source: myhello
+Binary: myhello myhello-dbgsym
 Architecture: amd64
 Version: 1.0.0-1
 Checksums-Md5:
- e2ce8be40546d1bd57698baa6951acf8 2676 hello-dbgsym_1.0.0-1_amd64.deb
- b0222a62114a0e10473122c74892a499 3420 hello_1.0.0-1_amd64.deb
+ 4c88f8e23105151dad498810ac7402a6 2680 myhello-dbgsym_1.0.0-1_amd64.deb
+ 1c0bd66d04b6e543d990496c2954aeeb 3424 myhello_1.0.0-1_amd64.deb
 Checksums-Sha1:
- 652b23e66d3432e79208fb0e3464c6b3a3ba1f0f 2676 hello-dbgsym_1.0.0-1_amd64.deb
- 892490cd5c767a32c5b91f4b5c53e969494fb90c 3420 hello_1.0.0-1_amd64.deb
+ 6226bacc5c2957f259a4671304e9dd2e3262cb8a 2680 myhello-dbgsym_1.0.0-1_amd64.deb
+ 8a85f968ea3fccf51572648f080991e039900441 3424 myhello_1.0.0-1_amd64.deb
 Checksums-Sha256:
- 628abe1481d89daae9d5b7f41c45a61d936eaa541221d7235c0aa40cfb9143f3 2676 hello-dbgsym_1.0.0-1_amd64.deb
- 46bf746dfb646f3c7800de5399cd0b17487e10718c19fbf51edea985e41ce3cd 3420 hello_1.0.0-1_amd64.deb
+ 75228fb1c2658732775857111e8d5ffdbba57a1e916fa0b9a01944d75ef2bb05 2680 myhello-dbgsym_1.0.0-1_amd64.deb
+ bc69a2a74fbac860e820a3e714fd5009e53cc3b4abd7f4963ab8e5752c0982c3 3424 myhello_1.0.0-1_amd64.deb
 Build-Origin: Pengwin
 Build-Architecture: amd64
-Build-Date: Sun, 11 Apr 2021 07:54:48 +0200
+Build-Date: Sun, 11 Apr 2021 17:31:56 +0200
 Installed-Build-Depends:
  adduser (= 3.118),
  apt (= 2.2.2),
@@ -284,3 +287,18 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=8"
  LANG="en_US.UTF-8"
  SOURCE_DATE_EPOCH="1618099745"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQHIBAEBCgAyFiEEKmaZCYNQMQe8O+iwKGYxn+YfhdsFAmBzFm0UHGppcmlrbGVw
+bEBzZXpuYW0uY3oACgkQKGYxn+YfhdtJyAv+OAELuqqERd+qRG0vCF5smy8LfBLm
+R9POoQCOG+vemr6jrb1/M/60c4renfovmk3Yg30Kk0x/hg7K4fg08sdUqA9UQO+D
+LIoL7PH8X0Q0VrBNLJWJys7tWDK8FTIs5NzP1501DhrxHBnWxlGnrxFARtk9CShD
+0OJ3Eg6UPwR9EJ5/t90k8xzc45IhVdS3sIQ9utVNP7MqxSVBAuoy061mqiW04TDN
+/e5YbwOZug3vUADABfBU7ggv4AujcY0BwlyVSmfcuz7Qx2Zfa0wOsIbxWs4NwbiI
+UyfRp7Wi3L+MjsrDNKOCRv3pgpOzZ5EGS7/33KKDF/8BgMu/z8rctVDpfqmBMvI0
+q0FcygTiyzElQ8tEznkNp2kMlxtVy3EcSJDmsUeaRsZD5dc5YqY7VkzSahCuRNlb
+B7RVavhMDvswgYLb40FG+eGPHuDJz9/Nlbk53vdTuwi3XB7O4l92HFEjH021eQzR
+J17dxSLfCXGRBDhMLNQQZlDwmQUVjOtWQQ70
+=8b4A
+-----END PGP SIGNATURE-----

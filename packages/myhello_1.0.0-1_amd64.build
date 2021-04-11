@@ -1,0 +1,76 @@
+ dpkg-buildpackage -us -uc -ui -b
+dpkg-buildpackage: info: source package myhello
+dpkg-buildpackage: info: source version 1.0.0-1
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Jiří Klepl <jiriklepl@seznam.cz>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+ fakeroot debian/rules clean
+dh_testdir
+dh_testroot
+rm -f build-stamp configure-stamp
+/usr/bin/make clean
+make[1]: Entering directory '/home/jirka/Documents/NSWI126/packages/myhello-1.0.0'
+rm -f bin/*
+make[1]: Leaving directory '/home/jirka/Documents/NSWI126/packages/myhello-1.0.0'
+dh_clean
+ debian/rules build
+/usr/bin/make
+make[1]: Entering directory '/home/jirka/Documents/NSWI126/packages/myhello-1.0.0'
+g++ -o bin/myhello -Iinclude src/main.cpp
+make[1]: Leaving directory '/home/jirka/Documents/NSWI126/packages/myhello-1.0.0'
+ fakeroot debian/rules binary
+/usr/bin/make
+make[1]: Entering directory '/home/jirka/Documents/NSWI126/packages/myhello-1.0.0'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/jirka/Documents/NSWI126/packages/myhello-1.0.0'
+dh_testdir
+dh_testroot
+dh_clean -k
+dh_clean: warning: dh_clean -k is deprecated; use dh_prep instead
+dh_clean: warning: This feature will be removed in compat 12.
+dh_installdirs
+# Add here commands to install the package into debian / packagename.
+/usr/bin/make DESTDIR=/home/jirka/Documents/NSWI126/packages/myhello-1.0.0/debian/myhello install
+make[1]: Entering directory '/home/jirka/Documents/NSWI126/packages/myhello-1.0.0'
+mkdir /home/jirka/Documents/NSWI126/packages/myhello-1.0.0/debian/myhello/usr
+mkdir /home/jirka/Documents/NSWI126/packages/myhello-1.0.0/debian/myhello/usr/bin
+mv bin/myhello /home/jirka/Documents/NSWI126/packages/myhello-1.0.0/debian/myhello/usr/bin/
+make[1]: Leaving directory '/home/jirka/Documents/NSWI126/packages/myhello-1.0.0'
+dh_testdir
+dh_testroot
+dh_installchangelogs
+dh_installdocs
+dh_installexamples
+dh_install
+dh_installman
+dh_link
+dh_strip
+dh_compress
+dh_fixperms
+dh_installdeb
+dh_shlibdeps
+dh_gencontrol
+dpkg-gencontrol: warning: package myhello: substitution variable ${shlibs:Depends} unused, but is defined
+dpkg-gencontrol: warning: package myhello: substitution variable ${shlibs:Depends} unused, but is defined
+dh_md5sums
+dh_builddeb
+dpkg-deb: building package 'myhello-dbgsym' in '../myhello-dbgsym_1.0.0-1_amd64.deb'.
+dpkg-deb: building package 'myhello' in '../myhello_1.0.0-1_amd64.deb'.
+ dpkg-genbuildinfo --build=binary
+ dpkg-genchanges --build=binary >../myhello_1.0.0-1_amd64.changes
+dpkg-genchanges: info: binary-only upload (no source code included)
+ dpkg-source --after-build .
+dpkg-buildpackage: info: binary-only upload (no source included)
+Now running lintian myhello_1.0.0-1_amd64.changes ...
+Could not find a profile matching: pengwin/main at /usr/share/lintian/bin/../lib/Lintian/Profile.pm line 503.
+	Lintian::Profile::read_profile(Lintian::Profile=HASH(0x55c88cab74b8), undef) called at /usr/share/lintian/bin/../lib/Lintian/Profile.pm line 296
+	Lintian::Profile::load(Lintian::Profile=HASH(0x55c88cab74b8), undef, ARRAY(0x55c88cb2f180), HASH(0x55c88cbc1900)) called at /usr/bin/lintian line 614
+Finished running lintian.
+Now signing changes and any dsc files...
+ signfile buildinfo myhello_1.0.0-1_amd64.buildinfo Jiří Klepl <jiriklepl@seznam.cz>
+
+ fixup_changes buildinfo myhello_1.0.0-1_amd64.buildinfo myhello_1.0.0-1_amd64.changes
+ signfile changes myhello_1.0.0-1_amd64.changes Jiří Klepl <jiriklepl@seznam.cz>
+
+Successfully signed buildinfo, changes files

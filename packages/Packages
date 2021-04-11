@@ -1,34 +1,34 @@
-Package: hello
+Package: myhello
 Version: 1.0.0-1
 Architecture: amd64
 Maintainer: Jiří Klepl <jiriklepl@seznam.cz>
 Installed-Size: 23
-Filename: ./hello_1.0.0-1_amd64.deb
-Size: 3420
-MD5sum: b0222a62114a0e10473122c74892a499
-SHA1: 892490cd5c767a32c5b91f4b5c53e969494fb90c
-SHA256: 46bf746dfb646f3c7800de5399cd0b17487e10718c19fbf51edea985e41ce3cd
+Filename: ./myhello_1.0.0-1_amd64.deb
+Size: 3424
+MD5sum: 1c0bd66d04b6e543d990496c2954aeeb
+SHA1: 8a85f968ea3fccf51572648f080991e039900441
+SHA256: bc69a2a74fbac860e820a3e714fd5009e53cc3b4abd7f4963ab8e5752c0982c3
 Section: text
 Priority: standard
 Homepage: https://github.com/jiriklepl/NSWI126
 Description: greets you!
     This program can greet you!
 
-Package: hello-dbgsym
-Source: hello
+Package: myhello-dbgsym
+Source: myhello
 Version: 1.0.0-1
 Auto-Built-Package: debug-symbols
 Architecture: amd64
 Maintainer: Jiří Klepl <jiriklepl@seznam.cz>
 Installed-Size: 17
-Depends: hello (= 1.0.0-1)
-Filename: ./hello-dbgsym_1.0.0-1_amd64.deb
-Size: 2676
-MD5sum: e2ce8be40546d1bd57698baa6951acf8
-SHA1: 652b23e66d3432e79208fb0e3464c6b3a3ba1f0f
-SHA256: 628abe1481d89daae9d5b7f41c45a61d936eaa541221d7235c0aa40cfb9143f3
+Depends: myhello (= 1.0.0-1)
+Filename: ./myhello-dbgsym_1.0.0-1_amd64.deb
+Size: 2680
+MD5sum: 4c88f8e23105151dad498810ac7402a6
+SHA1: 6226bacc5c2957f259a4671304e9dd2e3262cb8a
+SHA256: 75228fb1c2658732775857111e8d5ffdbba57a1e916fa0b9a01944d75ef2bb05
 Section: debug
 Priority: optional
-Description: debug symbols for hello
+Description: debug symbols for myhello
 Build-Ids: 62938754e254fce4173472275a874dca9837a97a
 

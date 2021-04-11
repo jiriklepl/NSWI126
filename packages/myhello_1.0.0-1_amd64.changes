@@ -1,0 +1,46 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Format: 1.8
+Date: Sun, 11 Apr 2021 02:09:05 +0200
+Source: myhello
+Binary: myhello myhello-dbgsym
+Architecture: amd64
+Version: 1.0.0-1
+Distribution: unstable
+Urgency: low
+Maintainer: Jiří Klepl <jiriklepl@seznam.cz>
+Changed-By: Jiří Klepl <jiriklepl@seznam.cz>
+Description:
+ myhello    - greets you!
+Changes:
+ myhello (1.0.0-1) unstable; urgency=low
+ .
+   * Initial release. (Closes: #XXXXXX)
+Checksums-Sha1:
+ 6226bacc5c2957f259a4671304e9dd2e3262cb8a 2680 myhello-dbgsym_1.0.0-1_amd64.deb
+ 566a1ae518cfffa0f979637663aadfbbf6b0eb4b 8716 myhello_1.0.0-1_amd64.buildinfo
+ 8a85f968ea3fccf51572648f080991e039900441 3424 myhello_1.0.0-1_amd64.deb
+Checksums-Sha256:
+ 75228fb1c2658732775857111e8d5ffdbba57a1e916fa0b9a01944d75ef2bb05 2680 myhello-dbgsym_1.0.0-1_amd64.deb
+ 9fa04b0796ffa6a7eccceccdc6d57e052afbd6fdf2be3f5887c2a096616dda46 8716 myhello_1.0.0-1_amd64.buildinfo
+ bc69a2a74fbac860e820a3e714fd5009e53cc3b4abd7f4963ab8e5752c0982c3 3424 myhello_1.0.0-1_amd64.deb
+Files:
+ 4c88f8e23105151dad498810ac7402a6 2680 debug optional myhello-dbgsym_1.0.0-1_amd64.deb
+ 080def4df9ce46f84ee9ab6492cb3a42 8716 text standard myhello_1.0.0-1_amd64.buildinfo
+ 1c0bd66d04b6e543d990496c2954aeeb 3424 text standard myhello_1.0.0-1_amd64.deb
+
+-----BEGIN PGP SIGNATURE-----
+
+iQHIBAEBCgAyFiEEKmaZCYNQMQe8O+iwKGYxn+YfhdsFAmBzFm0UHGppcmlrbGVw
+bEBzZXpuYW0uY3oACgkQKGYxn+YfhdvaYwv/ekhu8xePiHQjpnVHXmNeImkfS+VD
+PfkNMF6B4s4TNO6OXvUJ9D7AOeb5Uf2n1fOeve0fkVZQZl4E7DbOXdiUwXDWszx/
+eLip0AMRPtNapB3PhWD8fdiYWvxNZgBrwUv83cERPMwQ76xgzxUdsxX4sfxWO76/
+j32Me5QHmra45Y6qXhElpj+kmxaW2+BJe6K9oRifoAKeXdq0MADIk42m/Ma8W6Pt
+FwWsJ10kQg1FPNWF32Pgd6OIS5yU8zgx+YhniVZvc402tazVCxGp1fzs9awD05Z9
+2je9U5x4lmnzKSdOIBZiAobtrghWnseigw3r1FFK1cK3jR9T7haOAHyqEo6VeCg0
+wkVzPJHipWWYmpfzLwZtSr7NdBX0Y05I7jPxBJT5Pvy+6l+dFK6H0+ehaWPrSlWR
+Mbb05nbt10LlfXUYnVk/81WbUAzbdxhM5+cFbp1YyF0wcg9+fGHWE8b1//VeIIoR
+ZoQhQOmlRsoA9qpFql/7rSfkX/Ux4FXrdr4U
+=ooNH
+-----END PGP SIGNATURE-----
