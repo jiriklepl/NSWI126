@@ -19,28 +19,28 @@ Changes:
    * Initial release. (Closes: #XXXXXX)
 Checksums-Sha1:
  652b23e66d3432e79208fb0e3464c6b3a3ba1f0f 2676 hello-dbgsym_1.0.0-1_amd64.deb
- 109edf98c18e30eb4fa62d57c4a74abbf01acd15 8698 hello_1.0.0-1_amd64.buildinfo
+ 2a1bebe85b47eb055feda2eb1024f6c9d5b12999 8698 hello_1.0.0-1_amd64.buildinfo
  892490cd5c767a32c5b91f4b5c53e969494fb90c 3420 hello_1.0.0-1_amd64.deb
 Checksums-Sha256:
  628abe1481d89daae9d5b7f41c45a61d936eaa541221d7235c0aa40cfb9143f3 2676 hello-dbgsym_1.0.0-1_amd64.deb
- a528bac04bd70db5336ff5d01d3b2f92d71b7069745b9c228b0ead9c2acd5314 8698 hello_1.0.0-1_amd64.buildinfo
+ 5cf4cb8dccf998e9e1e315519500280943cfd134ec9d72d60bfca9498b2d0e2f 8698 hello_1.0.0-1_amd64.buildinfo
  46bf746dfb646f3c7800de5399cd0b17487e10718c19fbf51edea985e41ce3cd 3420 hello_1.0.0-1_amd64.deb
 Files:
  e2ce8be40546d1bd57698baa6951acf8 2676 debug optional hello-dbgsym_1.0.0-1_amd64.deb
- c506e952dffb66bda5a48fa5dc6ef6b3 8698 text standard hello_1.0.0-1_amd64.buildinfo
+ 77b0f30a14d5ef5bec62865b44ad1676 8698 text standard hello_1.0.0-1_amd64.buildinfo
  b0222a62114a0e10473122c74892a499 3420 text standard hello_1.0.0-1_amd64.deb
 
 -----BEGIN PGP SIGNATURE-----
 
-iQHIBAEBCgAyFiEEKmaZCYNQMQe8O+iwKGYxn+YfhdsFAmByfTAUHGppcmlrbGVw
-bEBzZXpuYW0uY3oACgkQKGYxn+Yfhdt81wv+P8I4JWhOpFN7JrQiz5V0cTwH7aB4
-rFNAksn6WdAGgCrNvCbi4FkgvV8C0KU6rwybRtZrDSVQl5WBkbiSuuombi6B+61d
-3dRyf4BXVCJFYN/nULUWsGdmZcqI0DStyZ/Lgf+i26fX/BctzR5w0crDUG5bftTX
-YxFe+KGfsOqo+iIrHQsrx7+kdhuIFx6nSilrfz7OEJLnWHR0vxg1QXxj3WA3N93T
-JbhkqJdTSD0j90nfBAH001kAmP4fSmlQe7bdi6tyOcTcB7dUx6Vwc/Xewz+B8BaQ
-l27ChG9A8RVRh2wKhrRJn0KgFsqq2NbqwpsCX8/y1NRbMAhJ8omhXOLxLeDXyvgw
-dDtTP71spww7HhC+ISa6XOofgP4BSSDeDm3ELZg43PccB3MFN8mdl7Vcnt+IzBza
-KMfkExpUwjg8m/UGTlgPwOzFoPQcSqA8WACEos04//WY6MJouCmaWl2Vbd+onfnL
-uE37yqPahGQLZWiGxUHgOM4EilXreU906QVe
-=8bQs
+iQHIBAEBCgAyFiEEKmaZCYNQMQe8O+iwKGYxn+YfhdsFAmByhYkUHGppcmlrbGVw
+bEBzZXpuYW0uY3oACgkQKGYxn+YfhdvLRgv/XD8GydIgvnDxiY1IslzSr1KOlRg+
+UmkWEZa9vnTUZwX04Q81yMI1DKvEVgWXZChDE8miOk4ua1kIF6bZEkEKGSakFaIe
+D0ghUyhH5BB8CUv513Sq+Cq2zammfJf7UCJnuZO86uDzwLhs4DJVbKFIJxEmLCMB
+iIL2kk+u5roq4PgI/U44DlVZnJJ+s1Snl6u5Tvzf3+nsvzioOrTtkmK3TVLMLk3X
+H/ppofK8e6eg54LaGYw5PGl4nRIVZ3lDhMD7AGGga7Tpfd9IvPbRQEweDYtEfrN0
+2IKjnK0xZkc0M/9Sf3vpj6tJGohgUjKgOlSndMaXd89uFLVuAO9qd92VXeuETtNB
+rQE1Xv+0T+SdiE4rrU+5XfgSlEoIYjqPnqtoKDywH2sGIIgFqpoDxsACeTC08nY1
+kYDrwOaUS+poChwtewq1MjIo72mjwm0uSNDeetX5TltPbUCvqklZguS3PksvqVDd
+PCE/zqg+Nr1lhDTCXBhM3kFQJTmGlvJJVZZh
+=X6nd
 -----END PGP SIGNATURE-----

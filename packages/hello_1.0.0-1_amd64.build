@@ -64,8 +64,8 @@ dpkg-genchanges: info: binary-only upload (no source code included)
 dpkg-buildpackage: info: binary-only upload (no source included)
 Now running lintian hello_1.0.0-1_amd64.changes ...
 Could not find a profile matching: pengwin/main at /usr/share/lintian/bin/../lib/Lintian/Profile.pm line 503.
-	Lintian::Profile::read_profile(Lintian::Profile=HASH(0x56110e925788), undef) called at /usr/share/lintian/bin/../lib/Lintian/Profile.pm line 296
-	Lintian::Profile::load(Lintian::Profile=HASH(0x56110e925788), undef, ARRAY(0x56110e9850b0), HASH(0x56110ea189e0)) called at /usr/bin/lintian line 614
+	Lintian::Profile::read_profile(Lintian::Profile=HASH(0x5560ffface30), undef) called at /usr/share/lintian/bin/../lib/Lintian/Profile.pm line 296
+	Lintian::Profile::load(Lintian::Profile=HASH(0x5560ffface30), undef, ARRAY(0x55610000c520), HASH(0x5561000a0280)) called at /usr/bin/lintian line 614
 Finished running lintian.
 Now signing changes and any dsc files...
  signfile buildinfo hello_1.0.0-1_amd64.buildinfo Jiří Klepl <jiriklepl@seznam.cz>
