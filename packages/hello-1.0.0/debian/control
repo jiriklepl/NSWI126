@@ -1,0 +1,12 @@
+Source: hello
+Section: text
+Priority: standard
+Maintainer: Jiří Klepl <jiriklepl@seznam.cz>
+Standards-Version: 1.0.0
+Build-Depends: debhelper (>> 5.0.0)
+
+Package: hello
+Homepage: https://github.com/jiriklepl/NSWI126
+Architecture: any
+Description: greets you!
+    This program can greet you!
