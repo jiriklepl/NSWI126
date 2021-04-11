@@ -1,0 +1,147 @@
+\documentclass[aspectratio=169]{beamer}
+% (the default is 43, i.e. 4:3)
+
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\usepackage{tikz}\usetikzlibrary{positioning}
+\usepackage{xcolor}
+
+\usepackage{listings}
+
+\usetheme{metropolis}
+
+
+\usepackage{FiraSans}
+
+% colored underline, with Beamer overlay support
+% usage: \cul{x} or \cul[blue]{x} or \cul<2->{x} or \cul<2->[blue]{x}
+\newcommand<>{\cul}[2][red]{%
+  % change underline dimentions: https://tex.stackexchange.com/a/167957/25264
+  \fontdimen8\textfont3=0.75pt%
+  % colored underline: https://tex.stackexchange.com/a/9477/25264
+  % transparent underline: https://tex.stackexchange.com/a/45601/25264
+  % switch between colored and transparent: http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/beamer/doc/beameruserguide.pdf sections 9.3 and 9.6.1
+  \alt#3%
+      {\color{#1}\underline{{\color{black}#2}}\color{black}}%
+      {\transparent{0.0}\underline{{\transparent{1.0}#2}}\transparent{1.0}}%
+}
+
+\title{APT (Advanced Package Tool)}
+\author{Jiří Klepl}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Package managers}
+
+\begin{frame}{Proč chtít package manager}
+\begin{itemize}
+\item \textbf{Z pohledu uživatele}
+  \begin{itemize}
+    \item Bezpečnost
+    \item Snadnost instalace \& updatů
+    \item Jednoduché hledání
+    \item Přehled o nainstalovaném softwaru
+    \item Udržení kompatibility mezi různými programy
+  \end{itemize}
+\item \textbf{Z pohledu developera}
+\begin{itemize}
+  \item Přívětivost pro uživatele
+  \item Vyšší důvěryhodnost (má to úroveň)
+  \item Možnost vytvoření ekologie % TODO
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Package managery}
+\begin{itemize}
+\item \textbf{apt}: Debian/Ubuntu
+\item \textbf{dnf}: Red Hat/Fedora
+\item \textbf{zypper}: SLES/openSUSE
+\item \textbf{pacman}: Arch
+\item \textbf{emerge}: Gentoo
+\end{itemize}
+
+Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
+\end{frame}
+
+\begin{frame}[fragile]{APT - instalační příkazy}
+  \begin{itemize}
+    \item Více než 50'000 packagů (Debian), 60'000 (Ubuntu)
+    \item Instalace
+    \begin{lstlisting}
+      sudo apt install <package>
+    \end{lstlisting}
+    \item Odstranění
+    \begin{lstlisting}
+      sudo apt remove <package>
+    \end{lstlisting}
+    \item Update \& upgrade
+    \begin{lstlisting}
+      sudo apt update && sudo apt upgrade
+    \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{APT - příkazy pro dotazování}
+  \begin{itemize}
+    \item Hledání package
+    \begin{lstlisting}
+      apt search "regex"
+    \end{lstlisting}
+    \item Informace o packagi
+    \begin{lstlisting}
+      apt info <package>
+    \end{lstlisting}
+    \item Seznam nainstalovaných packagů
+    \begin{lstlisting}
+      apt list --installed
+    \end{lstlisting}
+    \item Seznam ručně nainstalovaných packagů
+    \begin{lstlisting}
+      apt list --manual-installed
+    \end{lstlisting}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Přidání dalších packagů}
+  Jednoduše:
+  \begin{lstlisting}
+    sudo add-apt-repository "deb <repository>"
+    sudo apt-key adv --fetch-keys <url>
+    sudo apt-get update
+  \end{lstlisting}
+  Nebo:
+  \begin{lstlisting}
+    sudo <oblibeny editor (napr. VIM)> /etc/apt/sources.list
+    curl -L <url> | sudo apt-key add -
+  \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]{Zajímavé repozitáře}
+  \begin{itemize}
+    \item cuda toolkit
+
+    https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
+
+    \item intel oneAPI
+
+    https://software.intel.com/content/www/us/en/develop/articles/installing-intel-oneapi-toolkits-via-apt.html
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Kde brát informace}
+  \begin{itemize}
+    \item https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf
+    \item https://www.debian.org/doc/debian-policy/index.html
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\centering
+{\Large\bfseries Thank you for attention!}
+\end{frame}
+\end{document}
