@@ -6,7 +6,7 @@
 
 \usepackage{tikz}\usetikzlibrary{positioning}
 \usepackage{xcolor}
-
+\usepackage{hyperref}
 \usepackage{listings}
 
 \usetheme{metropolis}
@@ -20,249 +20,94 @@
       {\transparent{0.0}\underline{{\transparent{1.0}#2}}\transparent{1.0}}
 }
 
-\title{Callgrind}
+\title{Callgrind \& Kcachegrind}
 \author{Jiří Klepl}
 \date{}
 \begin{document}
 \maketitle
 
-\begin{frame}{Profilery}
+\begin{frame}{Profiling a proč profilovat \small{(link na konci prezentace)}}
+  \begin{quote}
+    With application development, a common step is to improve runtime performance. To not waste time on optimizing functions which are rarely used, one needs to know in which parts of the program most of the time is spent.
+
+    This is done with a technique called profiling. The program is run under control of a profiling tool, which gives the time distribution of executed functions in the run. After examination of the program's profile, it should be clear if and where optimization is useful. Afterwards, one should verify any runtime changes by another profile run. [\ref{manual2}]
+  \end{quote}
+\end{frame}
+
+\begin{frame}{Callgrind}
   \begin{itemize}
-    \item \textbf{Z pohledu uživatele}
+    \item Profiler ve \textbf{valgrindovém} simulovaném prostředí
     \begin{itemize}
-      \item Snadnost instalace \& updatů
-      \item Jednoduché hledání
-      \item Přehled o nainstalovaném softwaru
-      \item Udržení kompatibility mezi různými programy
-      \item Důvěryhodné binárky namísto hodin compilace
-      \item Bezpečnost
+      \item valgrind disassembluje binárky a sestavuje podle daného nástroje (zde s instrumentací)
+      \item základní nástroj valgrindu je memcheck, který kontroluje leaky a chybné přístupy
     \end{itemize}
-    \item \textbf{Z pohledu developera}
-    \begin{itemize}
-      \item Přívětivost pro uživatele
-      \item Vyšší důvěryhodnost (má to úroveň)
-      \item Možnost vytvoření ekosystému
-    \end{itemize}
+    \item Analyzuje \textbf{call-graph}; ale také i instrukce uvnitř funkcí a branch predikce, simulace cache (podle optionů)
+    \item Odvozen z nástroje \textbf{cachegrind}, stejný formát výstupu; obojí lze zobrazit v  v \textbf{kcachegrind} (nebo \textbf{qcachegrind})
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Package managery}
+\begin{frame}[fragile]{Srovnání s konvenčnějším profilingem (e.g. gprof)}
+
+  {\color{green} \textbf{Výhody}}
+
   \begin{itemize}
-    \item \textbf{apt}: Debian/Ubuntu
-    \item \textbf{dnf}: Red Hat/Fedora
-    \item \textbf{zypper}: SLES/openSUSE
-    \item \textbf{pacman}: Arch
-    \item \textbf{emerge}: Gentoo
+    \item Pohodlnost (stačí normální \textit{release} binárka s debug flagy - není nutno compilovat se speciálními optiony (u gprof \texttt{-pg}))
+    \item Přesnost měření a nezávislost na aktuálním zatížení stroje
+    \item Profiling neovlivňuje aplikaci (to je u běžné instrumentace velký problém)
+    \item Profilují se i dynamicky linkované knihovny (= profiler vidí vše)
+    \item Lze za běhu ovládat (nemusíme trávit staletí profilingem startupu, když nás zajímá jen jedna funkce)
   \end{itemize}
 
-Podrobné srovnání: https://wiki.archlinux.org/index.php/Pacman/Rosetta
-\end{frame}
+  {\color{red} \textbf{Nevýhody}}
 
-\begin{frame}[fragile]{APT - Advanced Package Tool}
   \begin{itemize}
-    \item Package manager pro debian (a ubuntu)
-    \item Skupina více programů a knihoven
-    \item Nejvýznamnější: \textbf{apt}, \textbf{apt-get}, \textbf{apt-cache}
-    \item Frontend pro \textbf{dpkg}: low-lvl nástroj pro instalaci a správu lokálních packagů
-    \item \textbf{apt} je funkcionálně front-endem ostatních nástrojů pro koncové uživatele
+    \item Pomalost (valgrind uvádí 50x slowdown)
+    \item Limitovaná podpora méně mainstream architektur (u AMD64 není problém)
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{APT - instalační příkazy}
-  \begin{itemize}
-    \item Více než 50'000 packagů (Debian), 60'000 (Ubuntu)
-    \item Instalace
-    \begin{lstlisting}
-  sudo apt install <package>
-    \end{lstlisting}
-    \item Odstranění
-    \begin{lstlisting}
-  sudo apt remove <package>
-    \end{lstlisting}
-    \item Update \& upgrade
-    \begin{lstlisting}
-  sudo apt update && sudo apt upgrade
-    \end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{APT - příkazy pro dotazování}
-  \begin{itemize}
-    \item Hledání package
-    \begin{lstlisting}
-  apt search "regex"
-    \end{lstlisting}
-    \item Informace o packagi
-    \begin{lstlisting}
-  apt info <package>
-    \end{lstlisting}
-    \item Seznam nainstalovaných packagů
-    \begin{lstlisting}
-  apt list --installed
-    \end{lstlisting}
-    \item Seznam ručně nainstalovaných packagů
-    \begin{lstlisting}
-  apt list --manual-installed
-    \end{lstlisting}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[plain]
-  \centering
-  {\Large\bfseries Příklad: ./examples.sh}
-\end{frame}
-
-\begin{frame}[fragile]{Přidání dalších packagů}
-  Jednoduše:
-  \begin{lstlisting}
-  sudo add-apt-repository "deb <repository>"
-  sudo apt-key adv --fetch-keys <url>
-  sudo apt-get update
+\begin{frame}[fragile]{Základní použití callgrindu}
+  \begin{lstlisting}[language=sh]
+valgrind --tool=callgrind [options] your-program [arguments]
   \end{lstlisting}
-  Nebo:
-  \begin{lstlisting}
-  sudo <oblibeny editor (napr. VIM)> /etc/apt/sources.list
-  curl -L <url> | sudo apt-key add -
+  {\color{blue} \lstinline{your-program} by měl mít debug flagy a narozdíl od debuggingu by měl být optimalizován}
+
+  \textbf{Základní optiony}
+
+  \begin{itemize}
+    \item \lstinline{--dump-instr=yes}: zanalyzuje machine code
+    \item \lstinline{--collect-jumps=yes}: zanalyzuje branching
+    \item \lstinline{--cache-sim=yes}: simulace cache
+  \end{itemize}
+
+  Výstup je v souboru: \texttt{callgrind.out.pid.part-threadID} (thready!)
+\end{frame}
+
+\begin{frame}{Kcachegrind (qcachegrind)}
+  \begin{itemize}
+    \item GUI procházení výstupu nástrojů \textbf{cachegrind} a \textbf{callgrind}
+    \item Velice intuitivní a feature-rich s procházením kódu (a nastavitelný)
+  \end{itemize}
+  \includegraphics[width=.9 \linewidth]{callgrind.png}
+\end{frame}
+
+\begin{frame}[fragile]{Demonstrace}
+  Ve složce \texttt{/callgrind} uvnitř tohoto repa (link: \href{https://github.com/jiriklepl/NSWI126/tree/master/callgrind}{NSWI126/callgrind})
+  \begin{lstlisting}[language=sh]
+    cd ex1
+    kcachegrind callgrind.out.7689
+  \end{lstlisting}
+  \begin{lstlisting}[language=sh]
+    cd ex2
+    kcachegrind callgrind.out.7787
   \end{lstlisting}
 \end{frame}
 
-\begin{frame}[fragile]{Zajímavé repozitáře}
-  \begin{itemize}
-    \item cuda toolkit
-
-    https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html
-
-    \item intel oneAPI
-
-    https://software.intel.com/content/www/us/en/develop/articles/installing-intel-oneapi-toolkits-via-apt.html
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Co to je package}
-  Dva druhy
-  \begin{itemize}
-    \item \textbf{binary package}
-    \begin{itemize}
-      \item Záznam repozitáře začíná ``deb'',
-
-      např. deb https://deb.debian.org/debian bullseye main
-      \item Pro koncové uživatele
-      \item Obecně jen pro určité architektury
-    \end{itemize}
-    \item \textbf{Source package}
-    \begin{itemize}
-      \item Záznam repozitáře začíná ``deb-src'',
-
-      např. deb-src https://deb.debian.org/debian bullseye main
-      \item Pro development, testing a customizaci
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Z čeho se skládá package připraven pro sestavení}
-  \begin{itemize}
-    \item Složka \textbf{debian} ve složce \textbf{<název>-<verze (major.minor.patch)>} se zdrojem programu; obsah \textbf{debian}:
-    \begin{itemize}
-      \item \textbf{changelog}: informace o verzích package
-      \item \textbf{rules}: script pro sestavení package (např. makefile - může pak spustit tradiční makefile programu; tato část je extrémě flexibilní - zde použijeme makefile s dh\_helpery, co řeší boilerplate)
-      \item \textbf{control}: různé informace o package
-      \begin{itemize}
-        \item Název, aktuální verze a kategorie (sekce a priorita (důležitost pro systém))
-        \item Maintainer a homepage
-        \item Popis programu
-        \item Architektura (např. amd64, ale i all nebo any)
-        \item Informace o (build-) dependencích a vyloučení
-      \end{itemize}
-      \item \textbf{compat}: verze dh\_helperů
-    \end{itemize}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[plain]
-  \centering
-  {\Large\bfseries Příklad: ../packages/myhello-1.0.0/debian}
-\end{frame}
-
-\begin{frame}[fragile]{Sestavení package}
-  \begin{itemize}
-    \item \lstinline{debuild -b} sestaví podepsaný .deb package
-    \item \lstinline{debuild -b -us -uc} sestaví nepodepsaný .deb package pro vlastní použití
-    \item Složna \textbf{debian} simuluje root file-systému
-      \begin{itemize}
-        \item Binárka programu tradičně v \textbf{/usr/bin/}, tedy při sestavování package: \textbf{debian/usr/bin/}
-        \item Library programu tradičně v \textbf{/usr/lib.../}, tedy při sestavování package: \textbf{debian/usr/lib.../}
-      \end{itemize}
-    \item Vznikne .deb archív a doprovodné soubory
-    \item Název vzniklého archívu obsahuje verzi, číslo revize a architekturu
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[plain]
-  \centering
-  {\Large\bfseries Příklad: ../packages/myhello-1.0.0}
-\end{frame}
-
-\begin{frame}[fragile]{.deb soubor: \texttt{ar} archive}
-  \begin{lstlisting}
-$ ar tv wget_1.12-2.1_i386.deb
-rw-r--r-- 0/0 4 Sep 5 15:43 2010 debian-binary
-rw-r--r-- 0/0 2403 Sep 5 15:43 2010 control.tar.gz
-rw-r--r-- 0/0 751613 Sep 5 15:43 2010 data.tar.gz
-  \end{lstlisting}
-  \begin{itemize}
-    \item \texttt{debian-binary}: version of the deb file format, "2.0{\textbackslash}n"
-    \item \texttt{control.tar.gz}: metadata about the package
-    \item \texttt{control, md5sums, (pre|post)(rm|inst), triggers, shlibs},...
-    \item \texttt{data.tar.gz}: data files of the package
-  \end{itemize}
-  from: https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf
-\end{frame}
-
-\begin{frame}[fragile]{Co když mám důvěryhodný program, který není .deb package}
-  Lze jednoduše zabalit do .deb package a nainstalovat přes dpkg / apt (opět příklad myhello)
-
-  Proč to dělat?
-  \begin{itemize}
-    \item Konzistence se zbytkem systému (jednotný způsob instalace)
-    \item Chci mít přehled i o softwaru, který není z repozitářů pro můj OS
-    \item Vyhnutí se mrtvým souborům v systému
-    \item Vyhnutí se mrtvým souborům v systému
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Apt repozitář}
-  Složka s .deb packagy a pomocnými soubory:
-  \begin{itemize}
-    \item \texttt{Packages}: soubor se seznamem packagů, stručnými informacemi a kontrolními součty
-    \item \texttt{Packages.gz} (optional): komprimovaný soubor Packages
-    \item \texttt{Release}: soubor s kontrolními součty pro soubory Packages (,Packages.gz) a sebe
-    \item \texttt{Release.gpg}: gnupg podpis souboru Release
-    \item \texttt{InRelease}: Release a Release.gpg dohromady
-    \item \texttt{public.key} (pokud nelze předat jiným způsobem): veřejný klíč pro ověření
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[plain]
-  \centering
-  {\Large\bfseries Příklad:}
-
-  {\Large\bfseries ../packages/scripts.sh}
-
-  {\Large\bfseries "deb https://klepl.cz/packages /"}
-\end{frame}
-
-\begin{frame}[fragile]{Kde vzít další informace}
-  \begin{itemize}
-    \item https://www.debian.org/doc/manuals/packaging-tutorial/packaging-tutorial.en.pdf
-    \item https://www.debian.org/doc/debian-policy/index.html
-    \item https://medium.com/sqooba/create-your-own-custom-and-authenticated-apt-repository-1e4a4cf0b864
-    \item https://wiki.archlinux.org/index.php/Pacman/Rosetta
-  \end{itemize}
-\end{frame}
-
-\begin{frame}[plain]
-  \centering
-  {\Large\bfseries Univerzum pro dotazy}
+\begin{frame}[fragile]{Více informací}
+  \begin{enumerate}
+    \item \href{https://valgrind.org/docs/manual/cl-manual.html}{https://valgrind.org/docs/manual/cl-manual.html}
+    \item \label{manual2} \href{https://www.cs.cmu.edu/afs/cs.cmu.edu/project/cmt-40/Nice/RuleRefinement/bin/valgrind-3.2.0/docs/html/cl-manual.html}{https://www.cs.cmu.edu/afs/cs.cmu.edu/.../cl-manual.html}
+  \end{enumerate}
 \end{frame}
 
 \begin{frame}[plain]
